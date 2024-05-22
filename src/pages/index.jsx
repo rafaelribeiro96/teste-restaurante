@@ -17,7 +17,7 @@ const ProductsPage = () => {
   const filteredProducts = products.filter(product => product.category === category);
 
   return (
-    <div>
+    <div className="products-page">
       <h1>Produtos</h1>
       <FullScreenButton />
       <div className="category-buttons">
