@@ -6,7 +6,7 @@
     "extends": [
         "plugin:react/recommended",
         "airbnb",
-        "prettier",
+        "eslint:recommended",
         "plugin:prettier/recommended"
     ],
     "overrides": [
@@ -23,8 +23,5 @@
       "react", "react-hooks"
     ],
     "rules": {
-      "react/react-in-jsx-scope": "off",
-      "react-hooks/rules-of-hooks": "off",
-      "react-hooks/exhaustive-deps": "off"
     }
 }
