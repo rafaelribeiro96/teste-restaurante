@@ -1,0 +1,59 @@
+import React, { useState, useContext } from 'react';
+import { CartContext } from '../context/CartContext';
+import FullScreenButton from '../components/FullScreenButton';
+import Link from 'next/link';
+import products from '../data/products';
+import '../styles/index.css';
+
+const ProductsPage = () => {
+  const { cart, addToCart, removeFromCart } = useContext(CartContext);
+  const [category, setCategory] = useState('comida');
+
+  const getProductQuantity = (product) => {
+    const cartItem = cart.find(item => item.id === product.id);
+    return cartItem ? cartItem.quantity : 0;
+  };
+
+  const filteredProducts = products.filter(product => product.category === category);
+
+  return (
+    <div>
+      <h1>Produtos</h1>
+      <FullScreenButton />
+      <div className="category-buttons">
+        <button
+          className={category === 'comida' ? 'active' : ''}
+          onClick={() => setCategory('comida')}
+        >
+          Comida
+        </button>
+        <button
+          className={category === 'bebida' ? 'active' : ''}
+          onClick={() => setCategory('bebida')}
+        >
+          Bebida
+        </button>
+      </div>
+      <ul className="product-list">
+        {filteredProducts.map(product => (
+          <li key={product.id}>
+            <img src={product.image} alt={product.name} />
+            <div>{product.name} - R$ {product.price.toFixed(2)}</div>
+            <div className="product-buttons">
+              <button onClick={() => removeFromCart(product)}>-</button>
+              <span>{getProductQuantity(product)}</span>
+              <button onClick={() => addToCart(product)}>+</button>
+            </div>
+          </li>
+        ))}
+      </ul>
+      <div className="cart-button-bottom-right">
+        <Link href="/cart">
+          <button className="cart-button-bottom">🛒</button>
+        </Link>
+      </div>
+    </div>
+  );
+};
+
+export default ProductsPage;
