@@ -3,7 +3,6 @@ import { CartContext } from '../context/CartContext';
 import FullScreenButton from '../components/FullScreenButton';
 import Link from 'next/link';
 import products from '../data/products';
-import '../styles/index.css';
 import Image from 'next/image';
 
 const ProductsPage = () => {

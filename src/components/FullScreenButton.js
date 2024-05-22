@@ -1,5 +1,4 @@
 import React, { useState } from 'react';
-import '../styles/fullscreen-button.css';
 
 const FullScreenButton = () => {
   const [isFullScreen, setIsFullScreen] = useState(false);

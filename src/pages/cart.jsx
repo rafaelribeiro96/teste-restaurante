@@ -1,7 +1,6 @@
 import React, { useContext, useState, useEffect } from 'react';
 import { CartContext } from '../context/CartContext';
 import Link from 'next/link';
-import '../styles/cart.css';
 import Image from 'next/image';
 
 const CartPage = () => {
