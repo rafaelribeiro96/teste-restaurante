@@ -9,7 +9,7 @@ export const CartProvider = ({ children }) => {
   const addToCart = (product) => {
     const existingProduct = cart.find(item => item.id === product.id);
     if (existingProduct) {
-      setCart(cart.map(item => 
+      setCart(cart.map(item =>
         item.id === product.id ? { ...item, quantity: item.quantity + 1 } : item
       ));
     } else {
@@ -22,7 +22,7 @@ export const CartProvider = ({ children }) => {
     if (existingProduct.quantity === 1) {
       setCart(cart.filter(item => item.id !== product.id));
     } else {
-      setCart(cart.map(item => 
+      setCart(cart.map(item =>
         item.id === product.id ? { ...item, quantity: item.quantity - 1 } : item
       ));
     }
