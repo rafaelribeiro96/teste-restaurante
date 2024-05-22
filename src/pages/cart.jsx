@@ -11,18 +11,31 @@ const CartPage = () => {
   } = useContext(CartContext);
   const [purchaseCompleted, setPurchaseCompleted] = useState(false);
   const [totalPrice, setTotalPrice] = useState(0);
+  const [newShopping, setNewShopping] = useState(false);
 
   useEffect(() => {
     const priceTotal = cart.reduce((acc, item) => acc + item.price * item.quantity, 0);
     setTotalPrice(priceTotal);
   }, [cart]);
 
-  const handleCheckout = () => {
-    setPurchaseCompleted(true);
-    setTimeout(() => {
+  useEffect(() => {
+    let timeout;
+    if (purchaseCompleted && !newShopping) {
+      timeout = setTimeout(() => {
+        clearCart();
+        router.push('/');
+      }, 10000);
+    } else if (newShopping) {
       clearCart();
       router.push('/');
-    }, 5000); // Redireciona após 10 segundos
+      setNewShopping(false);
+    }
+
+    return () => clearTimeout(timeout);
+  }, [newShopping, purchaseCompleted, clearCart, router]);
+
+  const handleCheckout = () => {
+    setPurchaseCompleted(true);
   };
 
   return (
@@ -38,7 +51,6 @@ const CartPage = () => {
                 {item.name}
                 {' '}
                 - Quantidade:
-                {' '}
                 {item.quantity}
               </li>
             ))}
@@ -48,10 +60,15 @@ const CartPage = () => {
             {totalPrice.toFixed(2)}
           </p>
           <Link href="/">
-            <button type="button" className="continue-shopping-button">Realizar Nova Compra</button>
+            <button
+              type="button"
+              onClick={() => setNewShopping(true)}
+              className="continue-shopping-button"
+            >
+              Realizar Nova Compra
+            </button>
           </Link>
         </div>
-
       ) : (
         <>
           <ul className="cart-list">
