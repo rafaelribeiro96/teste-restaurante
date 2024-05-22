@@ -19,7 +19,7 @@ const ProductsPage = () => {
 
   const handleTouchStart = (e) => {
     setTouchStart(e.targetTouches[0].clientX);
-    setTouchEnd(null); // Reseta touchEnd para evitar mudanças inesperadas
+    setTouchEnd(null);
   };
 
   const handleTouchMove = (e) => {
@@ -81,7 +81,7 @@ const ProductsPage = () => {
       <ul className="product-list">
         {filteredProducts.map((product) => (
           <li key={product.id}>
-            <Image src={product.image} alt={product.name} width={500} height={500} />
+            <Image src={product.image} alt={product.name} width={200} height={200} priority />
             <div>
               {product.name}
               {' '}
