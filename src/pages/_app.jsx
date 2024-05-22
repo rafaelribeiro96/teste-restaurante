@@ -1,10 +1,13 @@
+/* eslint-disable react/jsx-props-no-spreading */
+/* eslint-disable react/prop-types */
+/* eslint-disable react/react-in-jsx-scope */
 // pages/_app.js
+import FullScreenButton from '../components/FullScreenButton';
 import { CartProvider } from '../context/CartContext';
 import '../styles/globals.css';
 import '../styles/index.css';
 import '../styles/fullscreen-button.css';
 import '../styles/cart.css';
-import FullScreenButton from 'src/components/FullScreenButton';
 
 function MyApp({ Component, pageProps }) {
   return (
