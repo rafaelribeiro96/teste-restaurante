@@ -4,7 +4,7 @@ import Image from 'next/image';
 import { CartContext } from '../context/CartContext';
 import products from '../data/products';
 
-function ProductsPage() {
+const ProductsPage = () => {
   const { cart, addToCart, removeFromCart } = useContext(CartContext);
   const [category, setCategory] = useState('comida');
 
@@ -60,6 +60,6 @@ function ProductsPage() {
       </div>
     </div>
   );
-}
+};
 
 export default ProductsPage;

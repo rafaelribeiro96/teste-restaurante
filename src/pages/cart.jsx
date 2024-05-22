@@ -4,7 +4,7 @@ import Image from 'next/image';
 import { useRouter } from 'next/router';
 import { CartContext } from '../context/CartContext';
 
-function CartPage() {
+const CartPage = () => {
   const router = useRouter();
   const {
     cart, addToCart, removeFromCart, clearCart,
@@ -87,6 +87,6 @@ function CartPage() {
       )}
     </div>
   );
-}
+};
 
 export default CartPage;

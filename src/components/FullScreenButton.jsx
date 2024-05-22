@@ -1,6 +1,6 @@
 import React, { useState } from 'react';
 
-function FullScreenButton() {
+const FullScreenButton = () => {
   const [isFullScreen, setIsFullScreen] = useState(false);
 
   const toggleFullScreen = () => {
@@ -28,6 +28,6 @@ function FullScreenButton() {
     </button>
 
   );
-}
+};
 
 export default FullScreenButton;

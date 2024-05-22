@@ -9,13 +9,11 @@ import '../styles/index.css';
 import '../styles/fullscreen-button.css';
 import '../styles/cart.css';
 
-function MyApp({ Component, pageProps }) {
-  return (
-    <CartProvider>
-      <FullScreenButton />
-      <Component {...pageProps} />
-    </CartProvider>
-  );
-}
+const MyApp = ({ Component, pageProps }) => (
+  <CartProvider>
+    <FullScreenButton />
+    <Component {...pageProps} />
+  </CartProvider>
+);
 
 export default MyApp;
