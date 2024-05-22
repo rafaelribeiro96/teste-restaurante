@@ -2,8 +2,10 @@ import React, { useContext, useState, useEffect } from 'react';
 import { CartContext } from '../context/CartContext';
 import Link from 'next/link';
 import Image from 'next/image';
+import { useRouter } from 'next/router';
 
 const CartPage = () => {
+  const router = useRouter();
   const { cart, addToCart, removeFromCart, clearCart } = useContext(CartContext);
   const [purchaseCompleted, setPurchaseCompleted] = useState(false);
   const [totalPrice, setTotalPrice] = useState(0);
@@ -17,8 +19,8 @@ const CartPage = () => {
     setPurchaseCompleted(true);
     setTimeout(() => {
       clearCart();
-      window.location.href = '/';
-    }, 10000); // Redireciona após 10 segundos
+      router.push('/');
+    }, 5000); // Redireciona após 10 segundos
   };
 
   return (
@@ -34,7 +36,9 @@ const CartPage = () => {
           ))}
         </ul>
         <p className="total-price">Total: R${totalPrice.toFixed(2)}</p>
-        <button onClick={() => window.location.href = '/'}>Realizar Nova Compra</button>
+        <Link href="/">
+        <button className="continue-shopping-button">Realizar Nova Compra</button>
+        </Link>
       </div>
       
       ) : (

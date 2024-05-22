@@ -1,6 +1,5 @@
 import React, { useState, useContext } from 'react';
 import { CartContext } from '../context/CartContext';
-import FullScreenButton from '../components/FullScreenButton';
 import Link from 'next/link';
 import products from '../data/products';
 import Image from 'next/image';
@@ -19,7 +18,6 @@ const ProductsPage = () => {
   return (
     <div className="products-page">
       <h1>Produtos</h1>
-      <FullScreenButton />
       <div className="category-buttons">
         <button
           className={category === 'comida' ? 'active' : ''}
