@@ -19,6 +19,7 @@ const ProductsPage = () => {
 
   const handleTouchStart = (e) => {
     setTouchStart(e.targetTouches[0].clientX);
+    setTouchEnd(null); // Reseta touchEnd para evitar mudanças inesperadas
   };
 
   const handleTouchMove = (e) => {
@@ -29,18 +30,21 @@ const ProductsPage = () => {
     if (!touchStart || !touchEnd) return;
     const distance = touchStart - touchEnd;
     if (distance > 50) {
-      if (category === 'comida') {
-        setCategory('bebida');
-      } else if (category === 'bebida') {
-        setCategory('doce');
-      }
+      setCategory((prevCategory) => {
+        if (prevCategory === 'comida') return 'bebida';
+        if (prevCategory === 'bebida') return 'doce';
+        return prevCategory;
+      });
     } else if (distance < -50) {
-      if (category === 'doce') {
-        setCategory('bebida');
-      } else if (category === 'bebida') {
-        setCategory('comida');
-      }
+      setCategory((prevCategory) => {
+        if (prevCategory === 'doce') return 'bebida';
+        if (prevCategory === 'bebida') return 'comida';
+        return prevCategory;
+      });
     }
+    // Desativar a categoria anterior
+    setTouchStart(null);
+    setTouchEnd(null);
   };
 
   return (

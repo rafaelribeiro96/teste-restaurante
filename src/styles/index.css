@@ -37,13 +37,13 @@
 .product-list {
   max-width: 768px;
   width: 100%;
-  min-height: 70vh;
 }
 
 ul.product-list {
   display: flex;
   flex-wrap: wrap;
   justify-content: center;
+  align-items: start;
   gap: 20px;
   padding: 0;
 }
