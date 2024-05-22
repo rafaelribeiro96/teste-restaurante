@@ -4,6 +4,7 @@ import FullScreenButton from '../components/FullScreenButton';
 import Link from 'next/link';
 import products from '../data/products';
 import '../styles/index.css';
+import Image from 'next/image';
 
 const ProductsPage = () => {
   const { cart, addToCart, removeFromCart } = useContext(CartContext);
@@ -37,7 +38,7 @@ const ProductsPage = () => {
       <ul className="product-list">
         {filteredProducts.map(product => (
           <li key={product.id}>
-            <img src={product.image} alt={product.name} />
+            <Image src={product.image} alt={product.name} width={500} height={500} />
             <div>{product.name} - R$ {product.price.toFixed(2)}</div>
             <div className="product-buttons">
               <button onClick={() => removeFromCart(product)}>-</button>

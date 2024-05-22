@@ -2,6 +2,7 @@ import React, { useContext, useState, useEffect } from 'react';
 import { CartContext } from '../context/CartContext';
 import Link from 'next/link';
 import '../styles/cart.css';
+import Image from 'next/image';
 
 const CartPage = () => {
   const { cart, addToCart, removeFromCart, clearCart } = useContext(CartContext);
@@ -42,7 +43,7 @@ const CartPage = () => {
           <ul className="cart-list">
             {cart.map(item => (
               <li key={item.id}>
-                <img src={item.image} alt={item.name} />
+                <Image src={item.image} alt={item.name}  width={500} height={500}  />
                 <div>
                   <h3>{item.name}</h3>
                   <p>Preço: R${item.price.toFixed(2)}</p>
