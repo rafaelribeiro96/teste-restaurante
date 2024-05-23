@@ -1,4 +1,4 @@
-import React, { useState, useContext } from 'react';
+import React, { useState, useContext, useEffect } from 'react';
 import Link from 'next/link';
 import Image from 'next/image';
 import { CartContext } from '../context/CartContext';
@@ -6,9 +6,16 @@ import products from '../data/products';
 
 const ProductsPage = () => {
   const { cart, addToCart, removeFromCart } = useContext(CartContext);
-  const [category, setCategory] = useState('comida');
+  const [category, setCategory] = useState('Comida');
   const [touchStart, setTouchStart] = useState(null);
   const [touchEnd, setTouchEnd] = useState(null);
+  const [categories, setCategories] = useState([]);
+
+  useEffect(() => {
+    const uniqueCategories = [...new Set(products.map((product) => product.category))];
+    setCategories(uniqueCategories);
+    setCategory(uniqueCategories[0]);
+  }, []);
 
   const getProductQuantity = (product) => {
     const cartItem = cart.find((item) => item.id === product.id);
@@ -29,20 +36,14 @@ const ProductsPage = () => {
   const handleTouchEnd = () => {
     if (!touchStart || !touchEnd) return;
     const distance = touchStart - touchEnd;
+    const currentIndex = categories.indexOf(category);
     if (distance > 50) {
-      setCategory((prevCategory) => {
-        if (prevCategory === 'comida') return 'bebida';
-        if (prevCategory === 'bebida') return 'doce';
-        return prevCategory;
-      });
+      // Swipe left, move to the next category
+      setCategory(categories[(currentIndex + 1) % categories.length]);
     } else if (distance < -50) {
-      setCategory((prevCategory) => {
-        if (prevCategory === 'doce') return 'bebida';
-        if (prevCategory === 'bebida') return 'comida';
-        return prevCategory;
-      });
+      // Swipe right, move to the previous category
+      setCategory(categories[(currentIndex - 1 + categories.length) % categories.length]);
     }
-    // Desativar a categoria anterior
     setTouchStart(null);
     setTouchEnd(null);
   };
@@ -56,27 +57,16 @@ const ProductsPage = () => {
     >
       <h1>Produtos</h1>
       <div className="category-buttons">
-        <button
-          type="button"
-          className={category === 'comida' ? 'active' : ''}
-          onClick={() => setCategory('comida')}
-        >
-          Comida
-        </button>
-        <button
-          type="button"
-          className={category === 'bebida' ? 'active' : ''}
-          onClick={() => setCategory('bebida')}
-        >
-          Bebida
-        </button>
-        <button
-          type="button"
-          className={category === 'doce' ? 'active' : ''}
-          onClick={() => setCategory('doce')}
-        >
-          Doce
-        </button>
+        {categories.map((cat) => (
+          <button
+            key={cat}
+            type="button"
+            className={category === cat ? 'active' : ''}
+            onClick={() => setCategory(cat)}
+          >
+            {cat}
+          </button>
+        ))}
       </div>
       <ul className="product-list">
         {filteredProducts.map((product) => (
