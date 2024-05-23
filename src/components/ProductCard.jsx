@@ -1,20 +1,27 @@
-// components/ProductCard.js
 import React from 'react';
 import Image from 'next/image';
 
 const ProductCard = ({ product, getProductQuantity, addToCart, removeFromCart }) => (
-  <li>
+  <li className="product-card">
     <Image src={product.image} alt={product.name} width={200} height={200} priority />
     <div>
-      {product.name}
-      {' '}
-      - R$
-      {product.price.toFixed(2)}
+      <h3>{product.name}</h3>
+      <span>
+        R$
+        {' '}
+        {product.price.toFixed(2)}
+      </span>
     </div>
     <div className="product-buttons">
-      <button type="button" onClick={() => removeFromCart(product)}>-</button>
-      <span>{getProductQuantity(product)}</span>
-      <button type="button" onClick={() => addToCart(product)}>+</button>
+      {product.stock > 0 ? (
+        <>
+          <button type="button" className="remove-item-button" onClick={() => removeFromCart(product)}>-</button>
+          <span>{getProductQuantity(product)}</span>
+          <button type="button" className="add-item-button" onClick={() => addToCart(product)}>+</button>
+        </>
+      ) : (
+        <span>Item indisponível</span>
+      )}
     </div>
   </li>
 );

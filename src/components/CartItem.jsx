@@ -12,9 +12,9 @@ const CartItem = ({ item, removeFromCart, addToCart }) => (
         {item.price.toFixed(2)}
       </p>
       <div className="product-buttons">
-        <button type="button" onClick={() => removeFromCart(item)}>-</button>
+        <button type="button" className="remove-item-button" onClick={() => removeFromCart(item)}>-</button>
         <span>{item.quantity}</span>
-        <button type="button" onClick={() => addToCart(item)}>+</button>
+        <button type="button" className="add-item-button" onClick={() => addToCart(item)}>+</button>
       </div>
     </div>
   </li>
