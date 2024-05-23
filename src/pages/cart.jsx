@@ -81,7 +81,11 @@ const CartPage = () => {
             )
           )}
           {!showPaymentScreen && !showConfirmationModal && showCartSummary && (
-            <CartSummary totalPrice={totalPrice} handleCheckout={handleCheckout} />
+            <CartSummary
+              totalPrice={totalPrice}
+              handleCheckout={handleCheckout}
+              onContinueShopping={() => router.push('/')}
+            />
           )}
           {!showPaymentScreen && !showConfirmationModal && showCartSummary && (
             <ul className="cart-list">
@@ -94,17 +98,6 @@ const CartPage = () => {
                 />
               ))}
             </ul>
-          )}
-          {!showPaymentScreen && !showConfirmationModal && showCartSummary && (
-            <div className="cart-buttons">
-              <button
-                type="button"
-                className="continue-shopping-button"
-                onClick={() => router.push('/')}
-              >
-                Continuar Comprando
-              </button>
-            </div>
           )}
         </>
       )}

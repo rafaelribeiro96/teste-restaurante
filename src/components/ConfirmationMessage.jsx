@@ -11,7 +11,7 @@ const ConfirmationMessage = ({ onClose }) => {
 
   return (
     <div className="confirmation-message">
-      <p>Compra realizada!</p>
+      <p><strong>Compra realizada com sucesso!</strong></p>
       <p>Você já será redirecionado para a página inicial...</p>
       <button type="button" onClick={onClose}>Realizar Nova Compra</button>
     </div>

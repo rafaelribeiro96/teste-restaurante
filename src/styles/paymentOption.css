@@ -1,9 +1,9 @@
 .payment-option {
-  text-align: center;
   margin-bottom: 10px;
 }
 
-.payment-option button {
+.payment-button {
+  width: 60%;
   background-color: #007bff;
   color: white;
   border: none;
@@ -13,6 +13,21 @@
   font-size: 16px;
 }
 
-.payment-option button:hover {
+.payment-button:hover {
   background-color: #0056b3;
+}
+
+.cancel-payment-button {
+  width: 60%;
+  background-color: #dc3545; 
+  color: white;
+  border: none;
+  padding: 10px 20px;
+  border-radius: 5px;
+  cursor: pointer;
+  font-size: 16px;
+}
+
+.cancel-payment-button:hover {
+  background-color: #c82333;
 }

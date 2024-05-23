@@ -8,6 +8,8 @@ import '../styles/globals.css';
 import '../styles/index.css';
 import '../styles/fullscreen-button.css';
 import '../styles/cart.css';
+import '../styles/cartItem.css';
+import '../styles/cartSummary.css';
 import '../styles/confirmationMessage.css';
 import '../styles/confirmationModal.css';
 import '../styles/paymentOption.css';

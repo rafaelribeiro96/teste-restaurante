@@ -15,7 +15,6 @@
 
 .confirmation-modal button {
   margin: 0 10px;
-  background-color: #007bff;
   color: white;
   border: none;
   padding: 10px 20px;
@@ -24,6 +23,19 @@
   font-size: 16px;
 }
 
-.confirmation-modal button:hover {
-  background-color: #0056b3;
+.cancel-button-modal {
+  background-color: #dc3545;
 }
+
+.cancel-button-modal:hover {
+  background-color: #d32f2f;
+}
+
+.confirm-button-modal {
+  background-color: #28a745;
+}
+
+.confirm-button-modal:hover {
+  background-color: #218838;
+}
+

@@ -28,16 +28,6 @@
   margin-bottom: 20px;
 }
 
-.payment-screen button {
-  background-color: #007bff;
-  color: white;
-  border: none;
-  padding: 10px 20px;
-  border-radius: 5px;
-  cursor: pointer;
-  font-size: 16px;
-}
-
-.payment-screen button:hover {
-  background-color: #0056b3;
+.payment-screen strong {
+  font-weight: bold;
 }

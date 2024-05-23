@@ -1,3 +1,4 @@
+// components/PaymentScreen.js
 import React from 'react';
 import PaymentOption from './PaymentOption';
 
@@ -16,8 +17,10 @@ const PaymentScreen = ({ totalPrice, cart, onCancelPayment, onSelectPayment }) =
       ))}
     </ul>
     <p>
-      Total: R$
-      {totalPrice.toFixed(2)}
+      <strong>
+        Total: R$
+        {totalPrice.toFixed(2)}
+      </strong>
     </p>
     <div>
       <PaymentOption method="PIX" onSelectPayment={onSelectPayment} />
@@ -25,7 +28,9 @@ const PaymentScreen = ({ totalPrice, cart, onCancelPayment, onSelectPayment }) =
       <PaymentOption method="Cartão de Débito" onSelectPayment={onSelectPayment} />
       <PaymentOption method="Voucher" onSelectPayment={onSelectPayment} />
     </div>
-    <button type="button" onClick={onCancelPayment}>Cancelar Pagamento</button>
+    <button type="button" className="cancel-payment-button" onClick={onCancelPayment}>
+      Cancelar Pagamento
+    </button>
   </div>
 );
 
