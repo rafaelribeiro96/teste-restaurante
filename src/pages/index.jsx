@@ -78,7 +78,7 @@ const ProductsPage = () => {
       onTouchMove={handleTouchMove}
       onTouchEnd={handleTouchEnd}
     >
-      <Header title="Produtos" />
+      <Header title="Restaurante Teste" />
       <CategoryMenu categories={categories} category={category} setCategory={setCategory} />
       <ProductList
         products={filteredProducts}

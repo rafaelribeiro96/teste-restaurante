@@ -4,7 +4,7 @@
 
 .payment-button {
   width: 60%;
-  background-color: #007bff;
+  background-color: #1f4975;
   color: white;
   border: none;
   padding: 10px 20px;
@@ -14,12 +14,12 @@
 }
 
 .payment-button:hover {
-  background-color: #0056b3;
+  background-color: #173250;
 }
 
 .cancel-payment-button {
   width: 60%;
-  background-color: #dc3545; 
+  background-color: #ad434e; 
   color: white;
   border: none;
   padding: 10px 20px;

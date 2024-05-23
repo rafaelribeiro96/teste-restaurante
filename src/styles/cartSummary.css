@@ -21,17 +21,17 @@
 }
 
 .continue-shopping-button {
-  background-color: #007bff;
+  background-color: #1f4975;
 }
 
 .continue-shopping-button:hover {
-  background-color: #0056b3;
+  background-color: #1a324d;
 }
 
 .checkout-button {
-  background-color: #28a745;
+  background-color: #2d5f39;
 }
 
 .checkout-button:hover {
-  background-color: #218838;
+  background-color: #234b2c;
 }

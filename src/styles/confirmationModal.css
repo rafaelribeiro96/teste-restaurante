@@ -24,18 +24,18 @@
 }
 
 .cancel-button-modal {
-  background-color: #dc3545;
+  background-color: #ad434e;
 }
 
 .cancel-button-modal:hover {
-  background-color: #d32f2f;
+  background-color: #c82333;
 }
 
 .confirm-button-modal {
-  background-color: #28a745;
+  background-color: #2d5f39;
 }
 
 .confirm-button-modal:hover {
-  background-color: #218838;
+  background-color: #234b2c;
 }
 

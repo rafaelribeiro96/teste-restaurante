@@ -1,8 +1,8 @@
 // pages/CartPage.js
 import React, { useContext, useState, useEffect } from 'react';
 import { useRouter } from 'next/router';
+import Header from '../components/Header';
 import { CartContext } from '../context/CartContext';
-import CartHeader from '../components/CartHeader';
 import CartItem from '../components/CartItem';
 import CartSummary from '../components/CartSummary';
 import PaymentScreen from '../components/PaymentScreen';
@@ -58,7 +58,7 @@ const CartPage = () => {
 
   return (
     <div>
-      <CartHeader />
+      <Header title="Carrinho" />
       {purchaseCompleted ? (
         <ConfirmationMessage onClose={handleCloseConfirmationMessage} />
       ) : (

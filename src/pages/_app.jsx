@@ -16,6 +16,7 @@ import '../styles/paymentOption.css';
 import '../styles/paymentScreen.css';
 import '../styles/productCard.css';
 import '../styles/categoryMenu.css';
+import '../styles/header.css';
 
 const MyApp = ({ Component, pageProps }) => (
   <CartProvider>

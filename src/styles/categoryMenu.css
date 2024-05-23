@@ -1,9 +1,15 @@
 
+.category-menu {
+  position: sticky;
+  top: 0;
+  background-color: white; /* Defina a cor de fundo desejada */
+  z-index: 1000; /* Certifique-se de que o menu esteja acima de outros elementos */
+  width: 100%;
+}
+
 .category-buttons {
   display: flex;
   justify-content: center;
-  width: 100vi;
-  margin-bottom: 20px;
 }
 
 .category-buttons button {
