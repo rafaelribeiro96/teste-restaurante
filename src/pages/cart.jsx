@@ -2,10 +2,12 @@
 import React, { useContext, useState, useEffect } from 'react';
 import { useRouter } from 'next/router';
 import { CartContext } from '../context/CartContext';
-import Header from '../components/Header';
+import CartHeader from '../components/CartHeader';
 import CartItem from '../components/CartItem';
 import CartSummary from '../components/CartSummary';
-import PurchaseCompleted from '../components/PurchaseCompleted';
+import PaymentScreen from '../components/PaymentScreen';
+import ConfirmationModal from '../components/ConfirmationModal';
+import ConfirmationMessage from '../components/ConfirmationMessage';
 
 const CartPage = () => {
   const router = useRouter();
@@ -14,51 +16,96 @@ const CartPage = () => {
   } = useContext(CartContext);
   const [purchaseCompleted, setPurchaseCompleted] = useState(false);
   const [totalPrice, setTotalPrice] = useState(0);
-  const [newShopping, setNewShopping] = useState(false);
+  const [selectedPaymentMethod, setSelectedPaymentMethod] = useState('');
+  const [showConfirmationModal, setShowConfirmationModal] = useState(false);
+  const [showPaymentScreen, setShowPaymentScreen] = useState(false);
+  const [showCartSummary, setShowCartSummary] = useState(true);
 
   useEffect(() => {
     const priceTotal = cart.reduce((acc, item) => acc + item.price * item.quantity, 0);
     setTotalPrice(priceTotal);
   }, [cart]);
 
-  useEffect(() => {
-    let timeout;
-    if (purchaseCompleted && !newShopping) {
-      timeout = setTimeout(() => {
-        clearCart();
-        router.push('/');
-      }, 10000);
-    } else if (newShopping) {
-      clearCart();
-      router.push('/');
-      setNewShopping(false);
-    }
-
-    return () => clearTimeout(timeout);
-  }, [newShopping, purchaseCompleted, clearCart, router]);
-
   const handleCheckout = () => {
+    setShowCartSummary(false);
+    setShowPaymentScreen(true);
+  };
+
+  const handleCancelPayment = () => {
+    setShowConfirmationModal(false);
+    setShowPaymentScreen(false);
+    setShowCartSummary(true);
+    setSelectedPaymentMethod('');
+  };
+
+  const handleSelectPayment = (method) => {
+    setSelectedPaymentMethod(method);
+    setShowConfirmationModal(true);
+  };
+
+  const handleConfirmPayment = () => {
     setPurchaseCompleted(true);
+    setShowConfirmationModal(false);
+  };
+
+  const handleCloseConfirmationMessage = () => {
+    clearCart();
+    setPurchaseCompleted(false);
+    setSelectedPaymentMethod('');
+    setShowConfirmationModal(false);
+    router.push('/');
   };
 
   return (
     <div>
-      <Header title="Carrinho de compras" />
+      <CartHeader />
       {purchaseCompleted ? (
-        <PurchaseCompleted cart={cart} totalPrice={totalPrice} setNewShopping={setNewShopping} />
+        <ConfirmationMessage onClose={handleCloseConfirmationMessage} />
       ) : (
         <>
-          <ul className="cart-list">
-            {cart.map((item) => (
-              <CartItem
-                key={item.id}
-                item={item}
-                removeFromCart={removeFromCart}
-                addToCart={addToCart}
+          {showConfirmationModal && (
+            <ConfirmationModal
+              method={selectedPaymentMethod}
+              onCancel={handleCancelPayment}
+              onConfirm={handleConfirmPayment}
+            />
+          )}
+          {!showConfirmationModal && (
+            showPaymentScreen && (
+              <PaymentScreen
+                totalPrice={totalPrice}
+                cart={cart}
+                onCancelPayment={handleCancelPayment}
+                onSelectPayment={handleSelectPayment}
               />
-            ))}
-          </ul>
-          <CartSummary totalPrice={totalPrice} handleCheckout={handleCheckout} />
+            )
+          )}
+          {!showPaymentScreen && !showConfirmationModal && showCartSummary && (
+            <CartSummary totalPrice={totalPrice} handleCheckout={handleCheckout} />
+          )}
+          {!showPaymentScreen && !showConfirmationModal && showCartSummary && (
+            <ul className="cart-list">
+              {cart.map((item) => (
+                <CartItem
+                  key={item.id}
+                  item={item}
+                  removeFromCart={removeFromCart}
+                  addToCart={addToCart}
+                />
+              ))}
+            </ul>
+          )}
+          {!showPaymentScreen && !showConfirmationModal && showCartSummary && (
+            <div className="cart-buttons">
+              <button
+                type="button"
+                className="continue-shopping-button"
+                onClick={() => router.push('/')}
+              >
+                Continuar Comprando
+              </button>
+            </div>
+          )}
         </>
       )}
     </div>

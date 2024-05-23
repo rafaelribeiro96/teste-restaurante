@@ -8,6 +8,10 @@ import '../styles/globals.css';
 import '../styles/index.css';
 import '../styles/fullscreen-button.css';
 import '../styles/cart.css';
+import '../styles/confirmationMessage.css';
+import '../styles/confirmationModal.css';
+import '../styles/paymentOption.css';
+import '../styles/paymentScreen.css';
 
 const MyApp = ({ Component, pageProps }) => (
   <CartProvider>

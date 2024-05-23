@@ -1,0 +1,43 @@
+.payment-screen {
+  text-align: center;
+  background-color: #f0f0f0;
+  border: 1px solid #ccc;
+  border-radius: 5px;
+  padding: 20px;
+  margin: 20px auto;
+  max-width: 600px;
+}
+
+.payment-screen h2 {
+  font-size: 24px;
+  margin-bottom: 20px;
+}
+
+.payment-screen ul {
+  list-style-type: none;
+  padding: 0;
+}
+
+.payment-screen ul li {
+  font-size: 18px;
+  margin-bottom: 10px;
+}
+
+.payment-screen p {
+  font-size: 18px;
+  margin-bottom: 20px;
+}
+
+.payment-screen button {
+  background-color: #007bff;
+  color: white;
+  border: none;
+  padding: 10px 20px;
+  border-radius: 5px;
+  cursor: pointer;
+  font-size: 16px;
+}
+
+.payment-screen button:hover {
+  background-color: #0056b3;
+}
