@@ -14,6 +14,7 @@ const ProductsPage = () => {
   const [touchStart, setTouchStart] = useState(null);
   const [touchEnd, setTouchEnd] = useState(null);
   const [categories, setCategories] = useState([]);
+  const [totalValue, setTotalValue] = useState(0); // Estado para armazenar o valor total
 
   useEffect(() => {
     const loadProducts = async () => {
@@ -30,6 +31,16 @@ const ProductsPage = () => {
 
     loadProducts();
   }, []);
+
+  useEffect(() => {
+    // Calcular o valor total sempre que o carrinho mudar
+    const calculateTotalValue = () => {
+      const total = cart.reduce((acc, item) => acc + item.price * item.quantity, 0);
+      setTotalValue(total);
+    };
+
+    calculateTotalValue();
+  }, [cart]);
 
   const getProductQuantity = (product) => {
     const cartItem = cart.find((item) => item.id === product.id);
@@ -75,7 +86,7 @@ const ProductsPage = () => {
         addToCart={addToCart}
         removeFromCart={removeFromCart}
       />
-      <CartButton />
+      <CartButton totalValue={totalValue} />
     </div>
   );
 };

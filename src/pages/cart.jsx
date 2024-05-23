@@ -1,8 +1,11 @@
+// pages/CartPage.js
 import React, { useContext, useState, useEffect } from 'react';
-import Link from 'next/link';
-import Image from 'next/image';
 import { useRouter } from 'next/router';
 import { CartContext } from '../context/CartContext';
+import Header from '../components/Header';
+import CartItem from '../components/CartItem';
+import CartSummary from '../components/CartSummary';
+import PurchaseCompleted from '../components/PurchaseCompleted';
 
 const CartPage = () => {
   const router = useRouter();
@@ -40,66 +43,22 @@ const CartPage = () => {
 
   return (
     <div>
-      <h1>Carrinho de Compras</h1>
+      <Header title="Carrinho de compras" />
       {purchaseCompleted ? (
-        <div className="purchase-completed">
-          <h2>Compra Concluída!</h2>
-          <p>Produtos comprados:</p>
-          <ul>
-            {cart.map((item) => (
-              <li key={item.id}>
-                {item.name}
-                {' '}
-                - Quantidade:
-                {item.quantity}
-              </li>
-            ))}
-          </ul>
-          <p className="total-price">
-            Total: R$
-            {totalPrice.toFixed(2)}
-          </p>
-          <Link href="/">
-            <button
-              type="button"
-              onClick={() => setNewShopping(true)}
-              className="continue-shopping-button"
-            >
-              Realizar Nova Compra
-            </button>
-          </Link>
-        </div>
+        <PurchaseCompleted cart={cart} totalPrice={totalPrice} setNewShopping={setNewShopping} />
       ) : (
         <>
           <ul className="cart-list">
             {cart.map((item) => (
-              <li key={item.id}>
-                <Image src={item.image} alt={item.name} width={200} height={200} />
-                <div>
-                  <h3>{item.name}</h3>
-                  <p>
-                    Preço: R$
-                    {item.price.toFixed(2)}
-                  </p>
-                  <div className="product-buttons">
-                    <button type="button" onClick={() => removeFromCart(item)}>-</button>
-                    <span>{item.quantity}</span>
-                    <button type="button" onClick={() => addToCart(item)}>+</button>
-                  </div>
-                </div>
-              </li>
+              <CartItem
+                key={item.id}
+                item={item}
+                removeFromCart={removeFromCart}
+                addToCart={addToCart}
+              />
             ))}
           </ul>
-          <p className="total-price">
-            Total: R$
-            {totalPrice.toFixed(2)}
-          </p>
-          <div className="cart-buttons">
-            <Link href="/">
-              <button type="button" className="continue-shopping-button">Continuar Comprando</button>
-            </Link>
-            <button type="button" className="checkout-button" onClick={handleCheckout}>Finalizar Compra</button>
-          </div>
+          <CartSummary totalPrice={totalPrice} handleCheckout={handleCheckout} />
         </>
       )}
     </div>
