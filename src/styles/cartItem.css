@@ -1,9 +1,4 @@
-ul.cart-list {
-  list-style: none;
-  padding: 0;
-}
-
-ul.cart-list li {
+.cartItem {
   display: flex;
   align-items: center;
   background-color: white;
@@ -14,11 +9,7 @@ ul.cart-list li {
   transition: transform 0.3s;
 }
 
-ul.cart-list li:hover {
-  transform: translateY(-5px);
-}
-
-ul.cart-list img {
+.cartItem img {
   width: 100px;
   height: 100px;
   object-fit: cover;
@@ -26,28 +17,94 @@ ul.cart-list img {
   margin-right: 20px;
 }
 
-ul.cart-list div {
+.cartItem-product-info {
   flex-grow: 1;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: space-between;
 }
 
-ul.cart-list h3 {
+.cartItem-product-name {
+  font-size: 18px;
+  font-weight: bold;
   margin-bottom: 10px;
 }
 
-ul.cart-list p {
+.cartItem-product-price {
+  font-size: 16px;
   margin-bottom: 10px;
 }
 
-ul.cart-list .product-buttons {
+.cartItem .cartItem-product-buttons {
   display: flex;
   gap: 10px;
 }
 
-ul.cart-list .product-buttons button {
+.cartItem .cartItem-product-buttons button {
   color: white;
   border: none;
   padding: 5px 10px;
   border-radius: 5px;
   cursor: pointer;
   font-size: 16px;
+}
+
+.cartItem .cartItem-product-buttons span {
+  font-size: 16px;
+  padding: 5px 10px;
+  border-radius: 5px;
+  font-size: 16px;
+}
+
+.cartItem-product-total-price {
+  margin-top: 10px;
+  font-size: 18px;
+  font-weight: bold;
+}
+
+@media (min-width: 769px) {
+  .cartItem {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    align-items: center;
+  }
+
+  .cartItem-product-info {
+    flex-grow: 1;
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    justify-content: space-around;
+    align-items: center;
+  }
+
+  .cartItem-product-name {
+    width: 200px;
+    margin-bottom: 0;
+  }
+
+  .cartItem-product-price {
+    margin-bottom: 0px;
+  }
+
+  .cartItem-product-total-price {
+    margin-top: 0px;
+  }
+  
+  .cartItem img {
+    width: 120px;
+    height: 120px;
+  }
+
+  .cartItem .cartItem-product-buttons span {
+    font-size: 24px;
+    padding: 10px 20px;
+  }
+
+  .cartItem .cartItem-product-buttons button{
+    font-size: 24px;
+    padding: 10px 20px;
+  }
 }

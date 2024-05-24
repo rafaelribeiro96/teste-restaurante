@@ -6,7 +6,7 @@ const CartSummary = ({
   totalPrice, handleCheckout, onContinueShopping, cart, removeFromCart, addToCart
 }) => (
   <div className="cart-summary">
-    <div className="cart-buttons">
+    <div className="cart-summary-buttons">
       <button
         type="button"
         className="continue-shopping-button"
@@ -14,8 +14,12 @@ const CartSummary = ({
       >
         Continuar Comprando
       </button>
+      <span className="total-price">
+        Total: R$
+        {totalPrice.toFixed(2)}
+      </span>
       <button type="button" className="checkout-button" onClick={handleCheckout}>
-        Finalizar Compra
+        Ir para Pagamento
       </button>
     </div>
     <ul className="cart-list">
@@ -28,10 +32,7 @@ const CartSummary = ({
         />
       ))}
     </ul>
-    <span className="total-price">
-      Total: R$
-      {totalPrice.toFixed(2)}
-    </span>
+
   </div>
 );
 

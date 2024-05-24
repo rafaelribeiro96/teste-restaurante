@@ -3,7 +3,7 @@ import React from 'react';
 import Link from 'next/link';
 
 const CartButton = ({ totalValue, clearCart }) => (
-  <div className="cart-button-div">
+  <div className="cartButton-div">
     {totalValue === 0 ? <span>Selecione pelo menos um item</span> : null}
     {totalValue > 0
       ? (

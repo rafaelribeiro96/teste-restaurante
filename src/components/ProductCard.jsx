@@ -22,7 +22,7 @@ const ProductCard = ({ product, getProductQuantity, addToCart, removeFromCart })
               type="button"
               className="remove-item-button"
               onClick={() => removeFromCart(product)}
-              disabled={quantity === 0} // Desabilitar o botão quando a quantidade for 0
+              disabled={quantity === 0}
             >
               -
             </button>
