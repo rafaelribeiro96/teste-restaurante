@@ -15,8 +15,10 @@ import '../styles/confirmationModal.css';
 import '../styles/paymentOption.css';
 import '../styles/paymentScreen.css';
 import '../styles/productCard.css';
+import '../styles/cartButton.css';
 import '../styles/categoryMenu.css';
 import '../styles/header.css';
+import '../styles/productList.css';
 
 const MyApp = ({ Component, pageProps }) => (
   <CartProvider>

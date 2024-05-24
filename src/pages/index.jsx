@@ -8,13 +8,13 @@ import Header from '../components/Header';
 import fetchProducts from '../services/productService';
 
 const ProductsPage = () => {
-  const { cart, addToCart, removeFromCart } = useContext(CartContext);
+  const { cart, addToCart, removeFromCart, clearCart } = useContext(CartContext);
   const [products, setProducts] = useState([]);
   const [category, setCategory] = useState('');
   const [touchStart, setTouchStart] = useState(null);
   const [touchEnd, setTouchEnd] = useState(null);
   const [categories, setCategories] = useState([]);
-  const [totalValue, setTotalValue] = useState(0); // Estado para armazenar o valor total
+  const [totalValue, setTotalValue] = useState(0);
 
   useEffect(() => {
     const loadProducts = async () => {
@@ -78,7 +78,7 @@ const ProductsPage = () => {
       onTouchMove={handleTouchMove}
       onTouchEnd={handleTouchEnd}
     >
-      <Header title="Restaurante Teste" />
+      <Header title="QUAL O SEU PEDIDO?" />
       <CategoryMenu categories={categories} category={category} setCategory={setCategory} />
       <ProductList
         products={filteredProducts}
@@ -86,7 +86,7 @@ const ProductsPage = () => {
         addToCart={addToCart}
         removeFromCart={removeFromCart}
       />
-      <CartButton totalValue={totalValue} />
+      <CartButton totalValue={totalValue} clearCart={clearCart} />
     </div>
   );
 };

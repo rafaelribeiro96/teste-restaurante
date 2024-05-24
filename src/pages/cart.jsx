@@ -3,7 +3,6 @@ import React, { useContext, useState, useEffect } from 'react';
 import { useRouter } from 'next/router';
 import Header from '../components/Header';
 import { CartContext } from '../context/CartContext';
-import CartItem from '../components/CartItem';
 import CartSummary from '../components/CartSummary';
 import PaymentScreen from '../components/PaymentScreen';
 import ConfirmationModal from '../components/ConfirmationModal';
@@ -57,7 +56,7 @@ const CartPage = () => {
   };
 
   return (
-    <div>
+    <div className="cart-page">
       <Header title="Carrinho" />
       {purchaseCompleted ? (
         <ConfirmationMessage onClose={handleCloseConfirmationMessage} />
@@ -85,19 +84,10 @@ const CartPage = () => {
               totalPrice={totalPrice}
               handleCheckout={handleCheckout}
               onContinueShopping={() => router.push('/')}
+              cart={cart}
+              removeFromCart={removeFromCart}
+              addToCart={addToCart}
             />
-          )}
-          {!showPaymentScreen && !showConfirmationModal && showCartSummary && (
-            <ul className="cart-list">
-              {cart.map((item) => (
-                <CartItem
-                  key={item.id}
-                  item={item}
-                  removeFromCart={removeFromCart}
-                  addToCart={addToCart}
-                />
-              ))}
-            </ul>
           )}
         </>
       )}

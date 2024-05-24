@@ -9,6 +9,20 @@ body {
   font-family: 'Arial', sans-serif;
   background-color: #f8f9fa;
   color: #333;
+  width: 100%;
+  margin: 0 auto;
+  overflow-y: auto;
+}
+
+
+body::-webkit-scrollbar, html::-webkit-scrollbar {
+  display: none;
+}
+
+/* Garantir que o conteúdo seja rolável */
+body, html {
+  -ms-overflow-style: none;  /* IE e Edge */
+  scrollbar-width: none;  /* Firefox */
 }
 
 h1 {
