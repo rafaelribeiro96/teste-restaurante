@@ -20,7 +20,7 @@
   width: 150px;
   height: 150px;
   object-fit: cover;
-  border-radius: 20%;
+  border-radius: 50%;
   margin-bottom: 10px;
 }
 
@@ -50,4 +50,34 @@
 
 .add-item-button {
   background-color: #2d5f39;
+}
+
+@media (max-width: 768px) {
+  .product-card {
+    width: calc(50% - 10px);
+    max-width: 200px;
+  }
+}
+
+@media (min-width: 769px) {
+  .product-card {
+    width: calc(33.33% - 10px);
+    max-width: 300px;
+    max-height: 400px;
+  }
+
+  .product-card img {
+    width: 200px;
+    height: 200px;
+  }
+
+  .product-card .product-buttons span {
+    font-size: 24px;
+    padding: 10px 20px;
+  }
+
+  .product-card .product-buttons button {
+    font-size: 24px;
+    padding: 10px 20px;
+  }
 }

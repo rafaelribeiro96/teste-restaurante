@@ -10,13 +10,11 @@ ul.product-list {
   gap: 10px;
 }
 
-ul.product-list li:hover {
-  transform: translateY(-5px);
-}
-
-@media (max-width: 768px) {
-  ul.product-list li {
-    width: calc(50% - 10px);
-    max-width: 200px;
+@media (min-width: 769px) {
+  ul.product-list {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: space-evenly;
+    gap: 40px;
   }
 }

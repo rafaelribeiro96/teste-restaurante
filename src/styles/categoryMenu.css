@@ -30,3 +30,14 @@
 .category-buttons button:hover {
   background-color: #111111;
 }
+
+@media (min-width: 769px) {
+  .category-buttons {
+    height: 80px;
+  }
+
+  .category-buttons button {
+    padding: 5px;
+    font-size: 1.5rem;
+  }
+}
