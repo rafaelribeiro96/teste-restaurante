@@ -36,7 +36,7 @@
 .cartButton-checkout {
   background-color: white;
   border: none;
-  padding: 20px 20px;
+  padding: 10px 20px;
   border-radius: 5px;
   cursor: pointer;
   font-size: 16px;
@@ -59,4 +59,25 @@
   border-radius: 5px;
   cursor: pointer;
   font-size: 16px;
+}
+
+@media (min-width: 769px) {
+  .cartButton-div {
+    height: 150px;
+    justify-content: space-between;
+    padding: 20px;
+  }
+
+  .cartButton-totalPrice {
+    font-size: 1.5rem;
+  }
+
+  .cartButton-checkout {
+    font-size: 1.5rem;
+    padding: 20px 20px;
+  }
+
+  .cartButton-clear {
+    font-size: 1.5rem;
+  }
 }
