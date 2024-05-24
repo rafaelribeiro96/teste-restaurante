@@ -9,7 +9,7 @@ const CartItem = ({ item, removeFromCart, addToCart }) => (
 
       <h3 className="cartItem-product-name">{item.name}</h3>
       <div className="cartItem-product-price">
-        UN R$
+        R$
         {' '}
         {item.price.toFixed(2)}
       </div>

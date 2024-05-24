@@ -6,8 +6,6 @@ const ConfirmationModal = ({ method, onCancel, onConfirm }) => (
       Confirmar o pagamento pelo método:
       <br />
       <strong>{method}</strong>
-      {' '}
-      ?
     </p>
     <button type="button" className="cancel-button-modal" onClick={onCancel}>Cancelar</button>
     <button type="button" className="confirm-button-modal" onClick={onConfirm}>Confirmar</button>

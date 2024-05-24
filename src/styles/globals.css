@@ -47,3 +47,9 @@ button.fullscreen-btn {
 button.fullscreen-btn:hover {
   background-color: #0056b3;
 }
+
+@media (max-width: 500px) {
+  body {
+    padding: 0;
+  }
+}
