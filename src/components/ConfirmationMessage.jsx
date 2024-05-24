@@ -3,10 +3,10 @@ import React, { useEffect } from 'react';
 const ConfirmationMessage = ({ onClose }) => {
   useEffect(() => {
     const timer = setTimeout(() => {
-      onClose(); // Simula o clique no botão após 5 segundos
+      onClose();
     }, 5000);
 
-    return () => clearTimeout(timer); // Limpa o timer quando o componente é desmontado
+    return () => clearTimeout(timer);
   }, [onClose]);
 
   return (

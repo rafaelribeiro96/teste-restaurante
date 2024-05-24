@@ -60,20 +60,17 @@
   
 }
 
-.continue-shopping-button:hover {
-  background-color: #1b1b1b;
-}
-
  @media (min-width: 769px) {
   .cart-summary-buttons {
     height: 150px;
-    justify-content: space-between;
+    justify-content: space-around;
     padding: 20px;
   }
 
   .checkout-button {
     font-size: 1.5rem;
     padding: 20px;
+    width: 300px;
   }
 
   .continue-shopping-button {

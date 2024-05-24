@@ -12,14 +12,14 @@ const CartSummary = ({
         className="continue-shopping-button"
         onClick={onContinueShopping}
       >
-        Continuar Comprando
+        Continuar comprando
       </button>
       <span className="total-price">
         Total: R$
         {totalPrice.toFixed(2)}
       </span>
       <button type="button" className="checkout-button" onClick={handleCheckout}>
-        Ir para Pagamento
+        Ir para o pagamento
       </button>
     </div>
     <ul className="cart-list">
